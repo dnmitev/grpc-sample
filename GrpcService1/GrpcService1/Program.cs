@@ -1,6 +1,10 @@
 using GrpcService1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel(opt =>
+{
+    opt.ConfigureHttpsDefaults(httpsOpts => httpsOpts.SslProtocols = System.Security.Authentication.SslProtocols.Tls12)
+});
 
 // Additional configuration is required to successfully run gRPC on macOS.
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
