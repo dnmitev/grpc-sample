@@ -21,7 +21,9 @@ namespace GrpcSampleClient.Controllers
         [HttpGet(Name = "GetGreeted")]
         public async Task<string> Get(string name)
         {
-            using var channel= GrpcChannel.ForAddress("https://localhost:49153");
+            var url = Environment.GetEnvironmentVariable("GRPC_SERVICE_URL") ?? String.Empty;
+
+            using var channel= GrpcChannel.ForAddress(url);
             var client = new Greeter.GreeterClient(channel);
             var reply = await client.SayHelloAsync(
                               new HelloRequest { Name = name });

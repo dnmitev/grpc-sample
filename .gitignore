@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/GrpcService1/GrpcService1/bin
+/GrpcService1/GrpcService1/obj
+/GrpcSampleClient/GrpcSampleClient/obj
+/GrpcSampleClient/GrpcSampleClient/bin
