@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "M2EKr6LXKdSVtafl0hc8Ozx3WXpEg0DQm9QHesaM7uo=",
+  "Source": "GrpcSampleClient",
+  "BasePath": "_content/GrpcSampleClient",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
