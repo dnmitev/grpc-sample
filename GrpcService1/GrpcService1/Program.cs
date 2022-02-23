@@ -1,11 +1,19 @@
 using GrpcService1.Services;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.ConfigureKestrel(opt =>
-{
-    opt.ConfigureHttpsDefaults(httpsOpts => httpsOpts.SslProtocols = System.Security.Authentication.SslProtocols.Tls12);
-});
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
+var builder = WebApplication.CreateBuilder(args);
+
+var listenport = int.Parse(Environment.GetEnvironmentVariable("LISTEN_PORT")
+    ?? throw new ApplicationException("Environment variable LISTEN_PORT is not set."));
+builder.WebHost
+    .UseKestrel(options =>
+    {
+        options.ListenAnyIP(listenport, listenOptions =>
+        {
+            listenOptions.Protocols = HttpProtocols.Http2;
+        });
+    });
 // Additional configuration is required to successfully run gRPC on macOS.
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
